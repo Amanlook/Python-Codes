@@ -1,0 +1,49 @@
+# find days from givin dates
+
+from datetime import datetime
+
+start_date = '2022-12-12'
+end_date = '2022-12-11'
+
+days = datetime.strptime(end_date,'%Y-%m-%d').day - datetime.strptime(start_date,'%Y-%m-%d').day
+
+if days > 0:
+	print('days - ',days)
+else:
+	print('enter date correctly')
+  
+----------------------------------------------
+
+# wrapper function for time
+
+import time
+def timeis(func):
+    def wrap(*args, **kwargs):
+        start = time.time()
+        result = func(*args, **kwargs)
+        end = time.time()
+
+        print(func.__name__, end - start)
+        return result
+    return wrap
+@timeis
+def countdown(n):
+    while n > 0:
+        n -= 1
+countdown(5)
+
+-----------------------------------------------
+
+# CountDown Function
+import time
+
+def timeis(t):
+    while t:
+        mins, sec = divmod(t, 60)
+        timer = '{:02d}:{:02d}'.format(mins, sec)
+        print(timer, end="\n")
+        time.sleep(1)
+        t -= 1
+    print("Here it comes !")
+
+timeis(5)
