@@ -47,3 +47,23 @@ def timeis(t):
     print("Here it comes !")
 
 timeis(5)
+
+
+--------------------------------------------------
+# Code to generate QR code 
+import qrcode
+data = "https://www.example.com"
+
+qr = qrcode.QRCode(
+    version=1,  # Controls the size of the QR Code (1 is 21x21, higher numbers are larger)
+    error_correction=qrcode.constants.ERROR_CORRECT_L,  # Error correction level
+    box_size=10,  # Size of each box in the QR code
+    border=4,  # Thickness of the border (minimum is 4)
+)
+
+qr.add_data(data)
+qr.make(fit=True)
+img = qr.make_image(fill_color="black", back_color="white")
+img.save("qrcode.png")
+img.show()
+
